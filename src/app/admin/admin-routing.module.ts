@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: '', component: OverviewComponent },
+            { path: '', component: OverviewComponent }, 
             { path: 'accounts', loadChildren: accountsModule }
         ]
     }
