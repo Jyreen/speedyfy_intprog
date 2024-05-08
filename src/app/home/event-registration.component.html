@@ -1,0 +1,9 @@
+<form (ngSubmit)="submitForm()" #registrationForm="ngForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required [(ngModel)]="formData.name">
+  
+    <!-- Repeat similar input fields for contact number, email, and address -->
+  
+    <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+  </form>
+  
