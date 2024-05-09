@@ -1,0 +1,30 @@
+<h1>Events</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Create Event</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:30%">Name</th>
+            <th style="width:30%">Date</th>
+            <th style="width:30%">Location</th>
+            <th style="width:10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let event of events">
+            <td>{{ event.name }}</td>
+            <td>{{ event.date }}</td>
+            <td>{{ event.location }}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{ event.id }}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteEvent(event.id)" class="btn btn-sm btn-danger btn-delete-event">
+                    <span>Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!events">
+            <td colspan="4" class="text-center">
+                <span>Loading...</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -6,6 +6,8 @@ import { LayoutComponent } from './layout.component';
 import { OverviewComponent } from './overview.component';
 
 const accountsModule = () => import('./accounts/accounts.module').then(x => x.AccountsModule);
+const eventsModule = () => import('./events/events.module').then(x => x.EventsModule);
+ 
 
 const routes: Routes = [
     { path: '', component: SubNavComponent, outlet: 'subnav' },
@@ -13,7 +15,8 @@ const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [
             { path: '', component: OverviewComponent }, 
-            { path: 'accounts', loadChildren: accountsModule }
+            { path: 'accounts', loadChildren: accountsModule },
+            { path: 'events', loadChildren: eventsModule }
         ]
     }
 ];
