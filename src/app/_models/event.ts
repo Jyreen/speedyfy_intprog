@@ -5,4 +5,5 @@ export class Event {
     location: string;
     description: string;
     category: string;
+    photo: string;
   }

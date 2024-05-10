@@ -11,6 +11,7 @@ export class AddEventComponent implements OnInit {
     loading = false;
     submitted = false;
     isAddMode = true;
+    selectedFile: File | undefined;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -27,7 +28,8 @@ export class AddEventComponent implements OnInit {
             location: ['', Validators.required],
             description: ['', Validators.required],
             category: ['', Validators.required],
-            price: ['', Validators.required]
+            price: ['', Validators.required],
+            photo: ['', Validators.required],
         });
 
         // Check if it's an edit mode based on the route params
@@ -37,6 +39,10 @@ export class AddEventComponent implements OnInit {
                 // You can load event details here for editing
             }
         });
+    }
+
+    onFileSelected(event: any) {
+        this.selectedFile = event.target.files[0];
     }
 
     // Convenience getter for easy access to form fields
