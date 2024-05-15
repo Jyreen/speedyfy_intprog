@@ -6,6 +6,8 @@
             <th style="width:30%">Name</th>
             <th style="width:30%">Date</th>
             <th style="width:30%">Location</th>
+            <th style="width:30%">Price</th>
+            <th style="width:30%">Category</th>
             <th style="width:10%"></th>
         </tr>
     </thead>
@@ -14,6 +16,8 @@
             <td>{{ event.name }}</td>
             <td>{{ event.date }}</td>
             <td>{{ event.location }}</td>
+            <td>{{ event.price }}</td>
+            <td>{{ event.category }}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{ event.id }}" class="btn btn-sm btn-primary mr-1">Edit</a>
                 <button (click)="deleteEvent(event.id)" class="btn btn-sm btn-danger btn-delete-event">

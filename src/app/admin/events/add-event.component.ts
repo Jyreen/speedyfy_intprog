@@ -29,14 +29,12 @@ export class AddEventComponent implements OnInit {
             description: ['', Validators.required],
             category: ['', Validators.required],
             price: ['', Validators.required],
-            photo: ['', Validators.required],
+            photo: ['']
         });
 
-        // Check if it's an edit mode based on the route params
         this.route.params.subscribe(params => {
             if (params['id']) {
                 this.isAddMode = false;
-                // You can load event details here for editing
             }
         });
     }
