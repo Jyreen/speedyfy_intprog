@@ -1,26 +1,26 @@
 <div class="p-4">
-    <div class="container">
-        <h1 class="mb-4">Welcome to Speedyfy Marathon Event Registration!</h1>
-        <p>Below are the upcoming events:</p>
+  <div class="container">
+      <h1 class="mb-4">Welcome to Speedyfy Marathon Event Registration!</h1>
+      <p>Below are the upcoming events:</p>
 
-        <div class="container">
-            <h1>Events</h1>
-            <div class="row">
-              <div class="col-md-4 mb-4" *ngFor="let event of events">
-                <div class="card mb-4 border-primary">
-                  <img [src]="event.image || 'assets/default-event.jpg'" class="card-img-top" [alt]="event.name">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ event.name }}</h5>
-                    <p class="card-text">{{ event.description }}</p>
-                    <p class="card-text"><strong>Date:</strong> {{ event.date}}</p>
-                    <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
-                    <p class="card-text"><strong>Price:</strong> {{ event.price }}</p>
-                    <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
-                    <a href="#" class="btn btn-primary" (click)="joinEvent(event)">Join</a>
-                  </div>
+      <div class="container">
+          <h1>Events</h1>
+          <div class="row">
+            <div class="col-md-4 mb-4" *ngFor="let event of events">
+              <div class="card mb-4 border-primary">
+                <img [src]="'http://localhost:4000/' + event.image" alt="{{ event.name }}" style="width: 100%; height: auto; max-height: 250px; object-fit: cover;" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ event.name }}</h5>
+                  <p class="card-text">{{ event.description }}</p>
+                  <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
+                  <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
+                  <p class="card-text"><strong>Price:</strong> {{ event.price }}</p>
+                  <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
+                  <a href="#" class="btn btn-primary" (click)="joinEvent(event)">Join</a>
                 </div>
               </div>
             </div>
           </div>
-    </div>
+        </div>
+  </div>
 </div>

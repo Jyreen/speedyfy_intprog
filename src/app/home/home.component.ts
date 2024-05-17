@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService, EventService, AlertService } from '@app/_services';
 
+
 @Component({
   templateUrl: 'home.component.html'
 })
@@ -24,6 +25,7 @@ export class HomeComponent {
       });
   }
 
+  
 
 
   // Method to handle the event when the "Join" button is clicked

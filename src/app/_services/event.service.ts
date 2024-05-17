@@ -18,12 +18,12 @@ export class EventService {
         return this.http.get<Event>(`${baseUrl}/${id}`);
     }
 
-    create(event: Event): Observable<Event> {
-        return this.http.post<Event>(baseUrl, event);
+    create(eventData: FormData) {
+        return this.http.post(`${environment.apiUrl}/events`, eventData);
     }
 
-    update(id: string, event: Event): Observable<Event> {
-        return this.http.put<Event>(`${baseUrl}/${id}`, event);
+    update(id: string, eventData: FormData) {
+        return this.http.put(`${environment.apiUrl}/events/${id}`, eventData);
     }
 
     deleteEvent(id: string): Observable<any> {
