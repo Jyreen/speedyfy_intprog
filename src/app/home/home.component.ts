@@ -25,9 +25,6 @@ export class HomeComponent {
       });
   }
 
-  
-
-
   // Method to handle the event when the "Join" button is clicked
   joinEvent() {
     console.log('Join button clicked');

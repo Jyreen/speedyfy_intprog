@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'account', loadChildren: accountModule },
     { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-    { path: 'event-registration', component: EventRegistrationComponent, canActivate: [AuthGuard] },
+    { path: 'event-registration/:id', component: EventRegistrationComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

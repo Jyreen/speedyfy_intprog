@@ -16,7 +16,7 @@
                   <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
                   <p class="card-text"><strong>Price:</strong> {{ event.price }}</p>
                   <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
-                  <a href="#" class="btn btn-primary" (click)="joinEvent(event)">Join</a>
+                  <a [routerLink]="['/event-registration', event.id]" class="btn btn-primary">Join</a>
                 </div>
               </div>
             </div>
