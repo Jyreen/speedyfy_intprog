@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
   events: any[] = [];
   filteredEvents: any[] = [];
   searchQuery: string = '';
+  selectedCategory: string = 'All';
+  priceRange: string = 'All';
 
   constructor(
     private accountService: AccountService, 
@@ -33,18 +35,34 @@ export class HomeComponent implements OnInit {
   }
 
   filterEvents() {
-    const query = this.searchQuery.toLowerCase();
+    let filteredEvents = this.events;
 
-    if (!query) {
-      this.filteredEvents = this.events;
-    } else {
-      this.filteredEvents = this.events.filter(event =>
+    // Filter by search query
+    if (this.searchQuery) {
+      const query = this.searchQuery.toLowerCase();
+      filteredEvents = filteredEvents.filter(event =>
         event.name.toLowerCase().includes(query) ||
         event.description.toLowerCase().includes(query) ||
         event.location.toLowerCase().includes(query)
       );
     }
+
+    // Filter by category
+    if (this.selectedCategory !== 'All') {
+      filteredEvents = filteredEvents.filter(event => event.category === this.selectedCategory);
+    }
+
+    // Filter by price range
+    if (this.priceRange === 'Lowest to Highest') {
+      filteredEvents = filteredEvents.sort((a, b) => a.price - b.price);
+    } else if (this.priceRange === 'Highest to Lowest') {
+      filteredEvents = filteredEvents.sort((a, b) => b.price - a.price);
+    }
+
+    this.filteredEvents = filteredEvents;
   }
+
+
 
   joinEvent(eventId: string) {
     this.router.navigate(['/event-registration', eventId]);

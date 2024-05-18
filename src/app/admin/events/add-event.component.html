@@ -23,8 +23,11 @@
         <label>Category</label>
         <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
                 <option value="Half Marathon">Half Marathon</option>
+                <option value="Full Marathon">Full Marathon</option>
                 <option value="Ultra Marathon">Ultra Marathon</option>
                 <option value="Duathlon">Duathlon</option>
+                <option value="5K Marathon">5K Marathon</option>
+                <option value="10K Marathon">10K Marathon</option>
         </select>
         <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
             <div *ngIf="f.category.errors.required">Category is required</div>
