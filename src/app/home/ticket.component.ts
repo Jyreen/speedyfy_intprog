@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService, AccountService} from '@app/_services';
+import { EventService, AccountService, AlertService, TicketService} from '@app/_services';
 import { Account } from '../_models/account';
 
 @Component({
@@ -9,35 +9,38 @@ import { Account } from '../_models/account';
 })
 export class TicketComponent implements OnInit {
   event: any = {};
-  account: Account = new Account();
-  ticketNumber: string;
-  userEmail: string;
-
+  account = this.accountService.accountValue;
+  ticket_number: string;
 
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private alertService: AlertService,
+    private ticketService: TicketService
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      const eventId = params['eventId'];
-      this.ticketNumber = params['ticketNumber'];
-      this.userEmail = params['userEmail'];
+    this.route.paramMap.subscribe((params) => {
+      const eventId = params.get('id');
+      if (eventId) {
+        this.loadEventDetails(eventId);
+      }
+    });
 
+    this.ticketService.currentTicketNumber.subscribe(ticket_number => {
+      this.ticket_number = ticket_number;
     });
   }
-
+  
   loadEventDetails(eventId: string) {
-    this.eventService.getById(eventId).subscribe(
-      data => {
-        this.event = data;
-      },
-      error => {
-        console.error('Error loading event details', error);
-      }
-    );
-  }
-
+      this.eventService.getById(eventId).subscribe(
+        data => {
+          this.event = data;
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
+    }
 }
