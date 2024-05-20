@@ -4,8 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home';
 import { AuthGuard } from './_helpers';
 import { Role } from './_models';
-
+import { TicketComponent } from './home/ticket.component';
 import { EventRegistrationComponent } from './home/event-registration.component';
+
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'event-registration/:id', component: EventRegistrationComponent, canActivate: [AuthGuard] },
+    { path: 'ticket', component: TicketComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

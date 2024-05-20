@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
 import { EventRegistrationComponent } from './home/event-registration.component';
+import { TicketComponent } from './home/ticket.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EventRegistrationComponent } from './home/event-registration.component'
         AppComponent,
         AlertComponent,
         HomeComponent,
-        EventRegistrationComponent
+        EventRegistrationComponent,
+        TicketComponent
     ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AccountService, EventService, AlertService } from '@app/_services';
-import { Account } from '../_models/account';
 
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -29,7 +28,8 @@ export class EventRegistrationComponent implements OnInit {
     private eventService: EventService,
     private alertService: AlertService,
     private route: ActivatedRoute,
-    private http: HttpClient // Add this line
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -53,38 +53,12 @@ export class EventRegistrationComponent implements OnInit {
   }
 
   submitForm() {
-    this.loading = true;
+    this.loading = false;
     if (this.formData.terms) {
-      console.log('Form Submitted', this.formData);
 
-      // Send form data to the backend for validation
-      this.http.post<any>('http://localhost:4000/validate', this.formData)
-        .pipe(
-          catchError(error => {
-            this.alertService.error('An error occurred during form submission.');
-            return throwError(error);
-          })
-        )
-        .subscribe(response => {
-          // Assuming the backend responds with validation success and user email
-          const userEmail = response.email;
-  
-          // Send email to the user
-          this.http.post<any>('http://localhost:4000/send-registration-confirmation', { email: userEmail })
-            .pipe(
-              catchError(error => {
-                this.alertService.error('An error occurred while sending the email.');
-                return throwError(error);
-              })
-            )
-            .subscribe(() => {
-              this.alertService.success('Registration successful. Email sent.');
-              this.loading = false;
-            });
-        });
+      this.router.navigate(['/ticket'])
     } else {
       this.alertService.error('You must accept the terms and conditions.');
-      this.loading = false;
     }
   }
   
