@@ -61,10 +61,4 @@ export class HomeComponent implements OnInit {
 
     this.filteredEvents = filteredEvents;
   }
-
-
-
-  joinEvent(eventId: string) {
-    this.router.navigate(['/event-registration', eventId]);
-  }
 }

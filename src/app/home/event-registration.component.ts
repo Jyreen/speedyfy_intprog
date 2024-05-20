@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService, EventService, AlertService } from '@app/_services';
-
+import { Account } from '../_models/account';
 
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -56,7 +56,7 @@ export class EventRegistrationComponent implements OnInit {
     this.loading = true;
     if (this.formData.terms) {
       console.log('Form Submitted', this.formData);
-  
+
       // Send form data to the backend for validation
       this.http.post<any>('http://localhost:4000/validate', this.formData)
         .pipe(
