@@ -52,7 +52,7 @@
           <p><strong>Participant Email:</strong> {{account.email}} </p>
           <p><strong>Instructions:</strong> Please bring a copy of this ticket along with a valid ID to the event venue.</p>
           <p><strong>Name:</strong>{{ event.name }}</p>
-          <p><strong>Date:</strong> {{ event.date }}</p>
+          <p><strong>Date:</strong> {{ event.date | date }}</p>
           <p><strong>Location:</strong> {{ event.location }}</p>
         </div>
         

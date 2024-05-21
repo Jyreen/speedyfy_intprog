@@ -107,12 +107,12 @@
     <h1 class="mb-4">Welcome to Speedyfy Marathon Event Registration!</h1>
     <p>Below are the upcoming events:</p>
 
-    <div class="row mb-5">
+    <div class="row mb-4">
       <div class="col-md-4 input-group">
         <input type="text" [(ngModel)]="searchQuery" class="form-control" placeholder="Search events..." (input)="filterEvents()">
       </div>
           <!-- Add Filter Controls -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-3">
         <select [(ngModel)]="selectedCategory" class="form-control" (change)="filterEvents()">
           <option value="All">All Categories</option>
           <option value="Half Marathon">Half Marathon</option>
@@ -124,7 +124,7 @@
         </select>
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-4 mt-3">
         <select [(ngModel)]="priceRange" class="form-control" (change)="filterEvents()">
           <option value="All">All Prices</option>
           <option value="Lowest to Highest">Lowest to Highest Price</option>

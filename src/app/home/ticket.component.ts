@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService, AccountService, AlertService, TicketService} from '@app/_services';
+import { EventService, AccountService, AlertService, TicketService } from '@app/_services';
 import { Account } from '../_models/account';
 
 @Component({
@@ -9,7 +9,7 @@ import { Account } from '../_models/account';
 })
 export class TicketComponent implements OnInit {
   event: any = {};
-  account = this.accountService.accountValue;
+  account: Account = this.accountService.accountValue;
   ticket_number: string;
 
   constructor(
@@ -17,7 +17,7 @@ export class TicketComponent implements OnInit {
     private eventService: EventService,
     private accountService: AccountService,
     private alertService: AlertService,
-    private ticketService: TicketService
+    private ticketService: TicketService,
   ) { }
 
   ngOnInit(): void {
@@ -32,15 +32,15 @@ export class TicketComponent implements OnInit {
       this.ticket_number = ticket_number;
     });
   }
-  
+
   loadEventDetails(eventId: string) {
-      this.eventService.getById(eventId).subscribe(
-        data => {
-          this.event = data;
-        },
-        error => {
-          this.alertService.error(error);
-        }
-      );
-    }
+    this.eventService.getById(eventId).subscribe(
+      data => {
+        this.event = data;
+      },
+      error => {
+        this.alertService.error(error);
+      }
+    );
+  }
 }

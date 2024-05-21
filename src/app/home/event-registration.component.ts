@@ -42,7 +42,6 @@ export class EventRegistrationComponent implements OnInit {
     this.eventService.getById(eventId).subscribe(
       data => {
         this.event = data;
-        console.log('Event Details:', this.event); // Check event details
       },
       error => {
         this.alertService.error(error);
@@ -75,7 +74,7 @@ export class EventRegistrationComponent implements OnInit {
         ticket_number: this.generateTicketNumber()
       };
 
-      this.router.navigate(['/ticket', this.event.id])
+      this.router.navigate(['/ticket'])
         
 
       this.registrationService.registerEvent(registrationData)
@@ -91,6 +90,9 @@ export class EventRegistrationComponent implements OnInit {
 
           // Set the ticket number in the TicketService
           this.ticketService.setTicketNumber(registrationData.ticket_number);
+
+          this.router.navigate(['/ticket', this.event.id]);
+
 
       
         }, () => {
